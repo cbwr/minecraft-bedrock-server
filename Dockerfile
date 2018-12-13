@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
-RUN addgroup -g 1000 minecraft && \
-    adduser -Ss /bin/false -u 1000 -G minecraft -h /home/minecraft minecraft && \
-    mkdir -m 777 /bedrock-server /bedrock-server/config /bedrock-server/worlds /home/minecraft && \
+RUN addgroup --gid 1000 minecraft && \
+    adduser --shell /bin/false --uid 1000 --ingroup minecraft --home /home/minecraft minecraft && \
+    mkdir -m 777 /bedrock-server /bedrock-server/config /bedrock-server/worlds && \
     chown minecraft:minecraft /bedrock-server /bedrock-server/config /bedrock-server/worlds /home/minecraft && \
     apt-get update && \
     apt-get install -y unzip curl libcurl4 libssl1.0.0 gosu && \
