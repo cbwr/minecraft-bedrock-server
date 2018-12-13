@@ -8,25 +8,25 @@ else
   groupmod -o -g $GID minecraft
 fi
 
-download_url = ""
+download_url=""
 if [ -z "$URL" ]; then
   if ! [ -z "$VERSION" ]; then
-    download_url = "https://minecraft.azureedge.net/bin-linux/bedrock-server-$VERSION.zip"
+    download_url="https://minecraft.azureedge.net/bin-linux/bedrock-server-$VERSION.zip"
     echo "Set download URL from version: $download_url"
   fi
 else
-  download_url = "$URL"
+  download_url="$URL"
   echo "Set download URL: $download_url"
 fi
 
 if ! [ -z "$download_url" ]; then
   if [ $(< /bedrock-server/current_version.txt) != "$download_url" ]; then
     echo "Upgrading server..."
-    curl "$download_url" --output new-bedrock-server.zip
-    unzip new-bedrock-server.zip -d new-bedrock-server
+    curl "$download_url" --output /new-bedrock-server.zip
+    unzip /new-bedrock-server.zip -d /new-bedrock-server
     rm -rf /new-bedrock-server/worlds /new-bedrock-server/permissions.json /new-bedrock-server/whitelist.json /new-bedrock-server/server.properties
     cp -R /new-bedrock-server/. /bedrock-server/
-    rm -rf /new-bedrock-server new-bedrock-server.zip
+    rm -rf /new-bedrock-server /new-bedrock-server.zip
     echo "$download_url" > /bedrock-server/current_version.txt
     echo "done."
   else
