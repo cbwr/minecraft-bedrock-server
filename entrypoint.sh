@@ -20,13 +20,13 @@ else
 fi
 
 if ! [ -z "$download_url" ]; then
-  if [ $(< current_version.txt) != "$download_url" ]; then
+  if [ $(< /bedrock-server/current_version.txt) != "$download_url" ]; then
     echo "Upgrading server..."
-    curl "$download_url" --output bedrock-server.zip
-    unzip bedrock-server.zip -d new-bedrock-server
+    curl "$download_url" --output new-bedrock-server.zip
+    unzip new-bedrock-server.zip -d new-bedrock-server
     rm -rf /new-bedrock-server/worlds /new-bedrock-server/permissions.json /new-bedrock-server/whitelist.json /new-bedrock-server/server.properties
     cp -R /new-bedrock-server/. /bedrock-server/
-    rm -rf /new-bedrock-server
+    rm -rf /new-bedrock-server new-bedrock-server.zip
     echo "$download_url" > /bedrock-server/current_version.txt
     echo "done."
   else
