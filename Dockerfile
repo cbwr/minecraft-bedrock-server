@@ -9,7 +9,7 @@ RUN addgroup -g 1000 minecraft && \
     curl https://minecraft.azureedge.net/bin-linux/bedrock-server-1.8.0.24.zip --output bedrock-server.zip && \
     unzip bedrock-server.zip -d bedrock-server && \
     rm bedrock-server.zip && \
-    mv /bedrock-server/server.properties whitelist.json permissions.json /bedrock-server/config && \
+    mv /bedrock-server/server.properties /bedrock-server/whitelist.json bedrock-server/permissions.json /bedrock-server/config && \
     ln -s /bedrock-server/config/server.properties /bedrock-server/server.properties && \
     ln -s /bedrock-server/config/whitelist.json /bedrock-server/whitelist.json && \
     ln -s /bedrock-server/config/permissions.json /bedrock-server/permissions.json
