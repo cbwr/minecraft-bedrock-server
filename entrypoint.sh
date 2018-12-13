@@ -8,4 +8,4 @@ else
   groupmod -o -g $GID minecraft
 fi
 
-exec /usr/local/bin/gosu minecraft "$@"
+exec /usr/sbin/gosu minecraft "$@"
