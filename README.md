@@ -8,8 +8,8 @@ docker create --name=Minecraft \
 -v <path to config>:/bedrock-server/config \
 -v <path to worlds>:/bedrock-server/worlds \
 -e PID=<gid> -e PID=<uid> \
--e VERSION=<version>
--p 19132:8080 -p 19133:19133 \
+-e VERSION=<version> \
+-p 19132:19132 -p 19133:19133 \
 xnohbdyx/minecraft-bedrock-server
 ```
 
